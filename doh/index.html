@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111827">
+  <title>DOH — Documentation of Harassment</title>
+  <meta name="description" content="A privacy-first incident documentation workspace for creating a clear, chronological record.">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="./" aria-label="DOH home">
+        <span class="brand-mark">DOH</span>
+        <span class="brand-text">Documentation of Harassment</span>
+      </a>
+      <span class="privacy-chip">Local-only prototype</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">DOCUMENT • PRESERVE • ORGANIZE</p>
+          <h1>Build a clear record of incidents.</h1>
+          <p class="lede">Log what happened while details are fresh, keep evidence organized, and export a chronological record when you need it.</p>
+        </div>
+        <aside class="privacy-card">
+          <strong>Privacy by default</strong>
+          <p>This prototype stores entries only in this browser using local storage. Nothing you type is uploaded to this website.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="wrap section-grid">
+      <div class="panel">
+        <div class="panel-heading">
+          <div>
+            <p class="kicker">New incident</p>
+            <h2>Add to the log</h2>
+          </div>
+        </div>
+
+        <form id="incident-form">
+          <div class="form-grid two">
+            <label>
+              Date
+              <input id="date" name="date" type="date" required>
+            </label>
+            <label>
+              Time
+              <input id="time" name="time" type="time" required>
+            </label>
+          </div>
+
+          <label>
+            Incident type
+            <select id="type" name="type" required>
+              <option value="">Select one</option>
+              <option>Noise / banging</option>
+              <option>Yelling / verbal abuse</option>
+              <option>Threatening behaviour</option>
+              <option>Property-related incident</option>
+              <option>Unwanted contact</option>
+              <option>Other</option>
+            </select>
+          </label>
+
+          <label>
+            What happened?
+            <textarea id="description" name="description" rows="6" required placeholder="Record observable facts: what you saw or heard, where it happened, approximate duration, and exact words if you remember them."></textarea>
+          </label>
+
+          <div class="form-grid two">
+            <label>
+              Witnesses
+              <input id="witnesses" name="witnesses" type="text" placeholder="Names or identifiers">
+            </label>
+            <label>
+              Evidence / filenames
+              <input id="evidence" name="evidence" type="text" placeholder="e.g. 2026-08-31_2030_audio.m4a">
+            </label>
+          </div>
+
+          <label>
+            Action taken
+            <textarea id="action" name="action" rows="3" placeholder="e.g. did not respond; called 311; spoke with officer; saved audio clip"></textarea>
+          </label>
+
+          <div class="actions">
+            <button class="button primary" type="submit">Save incident</button>
+            <button class="button secondary" id="clear-form" type="button">Clear form</button>
+          </div>
+          <p id="form-status" class="status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+
+      <aside class="side-stack">
+        <div class="panel compact">
+          <p class="kicker">Good records</p>
+          <h2>Capture the basics</h2>
+          <ul class="check-list">
+            <li>Date, start time, and duration</li>
+            <li>Specific observable behaviour</li>
+            <li>Exact words when relevant</li>
+            <li>Witnesses and supporting files</li>
+            <li>Any response or escalation</li>
+          </ul>
+        </div>
+
+        <div class="panel compact">
+          <p class="kicker">Evidence</p>
+          <h2>Keep originals</h2>
+          <p class="muted">Preserve original audio, video, photos, messages, and metadata separately. Use this log to reference those files rather than embedding sensitive material in a public website.</p>
+        </div>
+      </aside>
+    </section>
+
+    <section class="wrap log-section">
+      <div class="panel">
+        <div class="panel-heading log-heading">
+          <div>
+            <p class="kicker">Chronology</p>
+            <h2>Incident log</h2>
+          </div>
+          <div class="actions compact-actions">
+            <button class="button secondary" id="export-json" type="button">Export JSON</button>
+            <button class="button secondary" id="export-csv" type="button">Export CSV</button>
+          </div>
+        </div>
+
+        <div id="empty-state" class="empty-state">No incidents saved in this browser yet.</div>
+        <div id="incident-list" class="incident-list" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="wrap footer-note">
+      <p><strong>Important:</strong> This is an organizational tool, not legal advice or an emergency service. If there is an immediate safety risk, contact the appropriate emergency service.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">DOH · Documentation of Harassment</div>
+  </footer>
+
+  <script src="./app.js"></script>
+</body>
+</html>
